@@ -158,6 +158,8 @@ export function LogoV2() {
   useEffect(t7, t8);
   const model = useMainLoopModel();
   const fullModelDisplayName = renderModelSetting(model);
+  const startupModelDisplayName =
+    fullModelDisplayName === 'Opus 4.6' ? '盘古' : fullModelDisplayName;
   const {
     version,
     cwd,
@@ -166,7 +168,7 @@ export function LogoV2() {
   } = getLogoDisplayData();
   const agentName = agent ?? agentNameFromSettings;
   const effortSuffix = getEffortSuffix(model, effortValue);
-  const t9 = fullModelDisplayName + effortSuffix;
+  const t9 = startupModelDisplayName + effortSuffix;
   let t10;
   if ($[13] !== t9) {
     t10 = truncate(t9, LEFT_PANEL_MAX_WIDTH - 20);

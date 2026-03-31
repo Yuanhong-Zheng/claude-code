@@ -32,7 +32,7 @@ export function getSteps(): Step[] {
     },
     {
       key: 'claudemd',
-      text: '运行 /init 生成 CLAUDE.md 协作说明文件',
+      text: '运行 /init 生成 pangu.md 协作说明文件',
       isComplete: hasClaudeMd,
       isCompletable: true,
       isEnabled: !isWorkspaceDirEmpty,

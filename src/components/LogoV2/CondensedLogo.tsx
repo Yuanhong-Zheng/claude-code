@@ -24,7 +24,9 @@ export function CondensedLogo() {
   const agent = useAppState(_temp);
   const effortValue = useAppState(_temp2);
   const model = useMainLoopModel();
-  const modelDisplayName = renderModelSetting(model);
+  const rawModelDisplayName = renderModelSetting(model);
+  const modelDisplayName =
+    rawModelDisplayName === 'Opus 4.6' ? '盘古' : rawModelDisplayName;
   const {
     version,
     cwd,
