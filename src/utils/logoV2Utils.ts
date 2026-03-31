@@ -96,9 +96,9 @@ export function calculateOptimalLeftWidth(
  */
 export function formatWelcomeMessage(username: string | null): string {
   if (!username || username.length > MAX_USERNAME_LENGTH) {
-    return '欢迎使用华为自研代码助手'
+    return '欢迎使用中国华为 Vibe Coding'
   }
-  return `欢迎回来，${username}`
+  return `欢迎回来，${username} · 中国华为 Vibe Coding`
 }
 
 /**
@@ -254,8 +254,8 @@ export function getLogoDisplayData(): {
     ? `${displayPath} in ${serverUrl.replace(/^https?:\/\//, '')}`
     : displayPath
   const billingType = isClaudeAISubscriber()
-    ? `华为自研服务 · ${getSubscriptionName()}`
-    : '华为自研推理服务'
+    ? `中国华为云服务 · ${getSubscriptionName()}`
+    : '中国华为自研算力'
   const agentName = getInitialSettings().agent
 
   return {

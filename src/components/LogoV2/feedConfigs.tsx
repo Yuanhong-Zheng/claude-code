@@ -18,10 +18,10 @@ export function createRecentActivityFeed(activities: LogOption[]): FeedConfig {
     };
   });
   return {
-    title: '最近动态',
+    title: '华为动态',
     lines,
     footer: lines.length > 0 ? '/resume 查看更多' : undefined,
-    emptyMessage: '暂无最近动态'
+    emptyMessage: '暂无最新动态'
   };
 }
 export function createWhatsNewFeed(releaseNotes: string[]): FeedConfig {
@@ -67,7 +67,7 @@ export function createProjectOnboardingFeed(steps: Step[]): FeedConfig {
     });
   }
   return {
-    title: '华为自研上手指南',
+    title: '中国华为 Vibe Coding 指南',
     lines
   };
 }
