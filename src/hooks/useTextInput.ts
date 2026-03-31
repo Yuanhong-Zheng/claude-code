@@ -381,11 +381,6 @@ export function useTextInput({
       default: {
         return function (input: string) {
           switch (true) {
-            // Some terminals/PTYS deliver Enter as a bare LF/CR without setting
-            // key.return. Treat a standalone newline as submit/newline intent
-            // instead of inserting it literally into the prompt.
-            case input === '\n' || input === '\r':
-              return handleEnter(key)
             // Home key
             case input === '\x1b[H' || input === '\x1b[1~':
               return cursor.startOfLine()
@@ -487,17 +482,15 @@ export function useTextInput({
         }
         setOffset(nextCursor.offset)
       }
-      // SSH/terminal-coalesced Enter: on slow or quirky terminals, "o" +
-      // Enter can arrive as one chunk ("o\r" or "o\n"). parseKeypress only
-      // recognizes a standalone return key, so the default handler above
-      // inserts the text fragment first and this branch performs the submit.
-      // Lone \r/\n is handled earlier by handleEnter(); embedded newlines are
-      // multi-line paste and should not auto-submit.
+      // SSH-coalesced Enter: on slow links, "o" + Enter can arrive as one
+      // chunk "o\r". parseKeypress only matches s === '\r', so it hit the
+      // default handler above (which stripped the trailing \r). Text with
+      // exactly one trailing \r is coalesced Enter; lone \r is Alt+Enter
+      // (newline); embedded \r is multi-line paste.
       if (
         filteredInput.length > 1 &&
-        (filteredInput.endsWith('\r') || filteredInput.endsWith('\n')) &&
+        filteredInput.endsWith('\r') &&
         !filteredInput.slice(0, -1).includes('\r') &&
-        !filteredInput.slice(0, -1).includes('\n') &&
         // Backslash+CR is a stale VS Code Shift+Enter binding, not
         // coalesced Enter. See default handler above.
         filteredInput[filteredInput.length - 2] !== '\\'
@@ -534,3 +527,4 @@ export function useTextInput({
     viewportCharEnd: cursor.getViewportCharEnd(maxVisibleLines),
   }
 }
+
