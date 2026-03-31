@@ -72,6 +72,12 @@ export async function assertMinVersion(): Promise<void> {
     return
   }
 
+  // Local leaked/dev builds do not participate in the official release channel,
+  // so server-side min-version gates would permanently block interactive use.
+  if (MACRO.VERSION.includes('leaked')) {
+    return
+  }
+
   try {
     const versionConfig = await getDynamicConfig_BLOCKS_ON_INIT<{
       minVersion: string
@@ -559,4 +565,3 @@ async function removeClaudeAliasesFromShellConfigs(): Promise<void> {
     }
   }
 }
-

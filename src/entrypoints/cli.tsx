@@ -31,6 +31,12 @@ if (feature('ABLATION_BASELINE') && process.env.CLAUDE_CODE_ABLATION_BASELINE) {
  * Fast-path for --version has zero imports beyond this file.
  */
 async function main(): Promise<void> {
+  // Older leaked builds used an invalid multi-character short flag (`-d2e`).
+  // Normalize it up front so Commander can parse the equivalent long option.
+  process.argv = process.argv.map(arg =>
+    arg === '-d2e' ? '--debug-to-stderr' : arg,
+  )
+
   const args = process.argv.slice(2);
 
   // Fast-path for --version/-v: zero module loading needed
