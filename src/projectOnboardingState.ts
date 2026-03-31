@@ -25,14 +25,14 @@ export function getSteps(): Step[] {
   return [
     {
       key: 'workspace',
-      text: 'Ask Claude to create a new app or clone a repository',
+      text: '让助手创建一个新应用，或克隆现有代码仓',
       isComplete: false,
       isCompletable: true,
       isEnabled: isWorkspaceDirEmpty,
     },
     {
       key: 'claudemd',
-      text: 'Run /init to create a CLAUDE.md file with instructions for Claude',
+      text: '运行 /init 生成 CLAUDE.md 协作说明文件',
       isComplete: hasClaudeMd,
       isCompletable: true,
       isEnabled: !isWorkspaceDirEmpty,
@@ -81,4 +81,3 @@ export function incrementProjectOnboardingSeenCount(): void {
     projectOnboardingSeenCount: current.projectOnboardingSeenCount + 1,
   }))
 }
-

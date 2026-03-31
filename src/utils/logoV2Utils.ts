@@ -96,9 +96,9 @@ export function calculateOptimalLeftWidth(
  */
 export function formatWelcomeMessage(username: string | null): string {
   if (!username || username.length > MAX_USERNAME_LENGTH) {
-    return 'Welcome back!'
+    return '欢迎使用华为自研代码助手'
   }
-  return `Welcome back ${username}!`
+  return `欢迎回来，${username}`
 }
 
 /**
@@ -254,8 +254,8 @@ export function getLogoDisplayData(): {
     ? `${displayPath} in ${serverUrl.replace(/^https?:\/\//, '')}`
     : displayPath
   const billingType = isClaudeAISubscriber()
-    ? getSubscriptionName()
-    : 'API Usage Billing'
+    ? `华为自研服务 · ${getSubscriptionName()}`
+    : '华为自研推理服务'
   const agentName = getInitialSettings().agent
 
   return {
@@ -348,4 +348,3 @@ export function getRecentReleaseNotesSync(maxItems: number): string[] {
   // Return raw notes without filtering or premature truncation
   return allNotes.slice(0, maxItems)
 }
-
