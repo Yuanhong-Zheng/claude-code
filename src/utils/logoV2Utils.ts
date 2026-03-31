@@ -255,7 +255,7 @@ export function getLogoDisplayData(): {
     : displayPath
   const billingType = isClaudeAISubscriber()
     ? `中国华为云服务 · ${getSubscriptionName()}`
-    : '中国华为自研算力'
+    : '中国华为自研'
   const agentName = getInitialSettings().agent
 
   return {
