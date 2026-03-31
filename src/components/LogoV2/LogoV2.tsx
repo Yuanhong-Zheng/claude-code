@@ -159,7 +159,7 @@ export function LogoV2() {
   const model = useMainLoopModel();
   const fullModelDisplayName = renderModelSetting(model);
   const startupModelDisplayName =
-    fullModelDisplayName === 'Opus 4.6' ? '盘古' : fullModelDisplayName;
+    fullModelDisplayName === 'Opus 4.6' ? '盘古大模型' : fullModelDisplayName;
   const {
     version,
     cwd,

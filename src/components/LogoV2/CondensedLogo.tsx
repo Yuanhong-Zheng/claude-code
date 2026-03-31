@@ -26,7 +26,7 @@ export function CondensedLogo() {
   const model = useMainLoopModel();
   const rawModelDisplayName = renderModelSetting(model);
   const modelDisplayName =
-    rawModelDisplayName === 'Opus 4.6' ? '盘古' : rawModelDisplayName;
+    rawModelDisplayName === 'Opus 4.6' ? '盘古大模型' : rawModelDisplayName;
   const {
     version,
     cwd,
