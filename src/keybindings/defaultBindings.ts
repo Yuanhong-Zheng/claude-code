@@ -71,6 +71,8 @@ export const DEFAULT_BINDINGS: KeybindingBlock[] = [
       'meta+o': 'chat:fastMode',
       'meta+t': 'chat:thinkingToggle',
       enter: 'chat:submit',
+      'ctrl+j': 'chat:submit',
+      'ctrl+m': 'chat:submit',
       up: 'history:previous',
       down: 'history:next',
       // Editing shortcuts (defined here, migration in progress)
@@ -338,4 +340,3 @@ export const DEFAULT_BINDINGS: KeybindingBlock[] = [
     },
   },
 ]
-
